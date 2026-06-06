@@ -107,11 +107,11 @@ export default function App() {
   }, []);
 
   const safe = jobs || [];
-  const total     = safe.length;
-  const active    = safe.filter(j => j.status === "active").length;
-  const completed = safe.filter(j => j.status === "completed").length;
-  const failed    = safe.filter(j => j.status === "failed").length;
-  const waiting   = safe.filter(j => j.status === "waiting").length;
+  const total     = stats.reduce((a, s) => a + Number(s.count), 0);
+  const completed = stats.filter(s => s.status === "completed").reduce((a, s) => a + Number(s.count), 0);
+  const failed    = stats.filter(s => s.status === "failed").reduce((a, s) => a + Number(s.count), 0);
+  const waiting   = stats.filter(s => s.status === "waiting").reduce((a, s) => a + Number(s.count), 0);
+  const active    = stats.filter(s => s.status === "active").reduce((a, s) => a + Number(s.count), 0);
 
   const chartData = ["email", "image", "report"].map(queue => {
     const qs = (stats || []).filter(s => s.queue === queue);
@@ -131,7 +131,7 @@ export default function App() {
   })[name] || "#9ca3af";
 
   return (
-    <div style={{ minHeight: "100svh", background: "var(--bg)", fontFamily: "var(--sans)", color: "var(--text)" }}>
+    <div style={{ minHeight: "100svh", fontFamily: "var(--sans)", color: "var(--text)" }}>
       {/* Topbar */}
       <div style={{
         borderBottom: "1px solid var(--border)",

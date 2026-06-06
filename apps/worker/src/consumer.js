@@ -11,7 +11,7 @@ const WORKER_ID = process.env.WORKER_ID || 'worker-1';
 const GROUP_NAME = 'taskqueue-workers';
 
 // Connect to API's Socket.io server
-const socket = io('http://localhost:3000');
+const socket = io('http://api:3000');
 socket.on('connect', () => console.log(`[${WORKER_ID}] Connected to event bus`));
 socket.on('disconnect', () => console.log(`[${WORKER_ID}] Disconnected from event bus`));
 
