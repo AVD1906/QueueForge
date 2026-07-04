@@ -31,17 +31,17 @@ Producers (REST API)
 Redis Streams ──────────────────────────────────┐
   queue:email                                    │
   queue:image                 XREADGROUP         │
-  queue:report  ◄─────────────────────────────  │
+  queue:report  ◄────────────────────────────-   │
         │                                        │
         │              Workers (Docker replicas) │
         │         ┌──────────┬──────────┐        │
         │         │ worker-1 │ worker-2 │  ...   │
         │         └────┬─────┴────┬─────┘        │
-        │              │ XACK     │               │
-        ▼              ▼          ▼               │
-   PostgreSQL    job history + status             │
-   (source of    result / error                   │
-    truth)                                        │
+        │              │ XACK     │              | 
+        ▼              ▼          ▼              | 
+   PostgreSQL    job history + status            | 
+   (source of    result / error                  |
+    truth)                                       |
         │                                        │
         ▼                                        │
   React Dashboard ◄── Socket.io WebSockets ──────┘
