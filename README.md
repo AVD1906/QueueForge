@@ -19,6 +19,9 @@ Tested with [k6](https://k6.io) at 50 concurrent virtual users over 70 seconds:
 | Failure rate | **0.00%** |
 | Checks passed | 40,936 / 40,936 (100%) |
 
+<img width="1114" height="762" alt="WhatsApp Image 2026-07-04 at 18 39 17" src="https://github.com/user-attachments/assets/21426e91-dbb4-4c71-b717-8bfd8ca5dbde" />
+
+
 ---
 
 ## Architecture
